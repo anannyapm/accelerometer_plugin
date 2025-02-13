@@ -25,31 +25,57 @@ class HomeScreen extends StatelessWidget {
       ),
       body: SafeArea(
         child: Center(
-          child: Obx(() {
-            return Card(
-              elevation: 10,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
+          child: Column(
+            children: [
+              Obx(() {
+                return Card(
+                  elevation: 10,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Container(
+                    padding: const EdgeInsets.all(30),
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.9),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        _buildSensorValue('X', controller.x.value),
+                        const SizedBox(height: 20),
+                        _buildSensorValue('Y', controller.y.value),
+                        const SizedBox(height: 20),
+                        _buildSensorValue('Z', controller.z.value),
+                      ],
+                    ),
+                  ),
+                );
+              }),
+              const SizedBox(
+                height: 30,
               ),
-              child: Container(
-                padding: const EdgeInsets.all(30),
-                decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.9),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    _buildSensorValue('X', controller.x.value),
-                    const SizedBox(height: 20),
-                    _buildSensorValue('Y', controller.y.value),
-                    const SizedBox(height: 20),
-                    _buildSensorValue('Z', controller.z.value),
-                  ],
-                ),
-              ),
-            );
-          }),
+              Obx(() {
+                return ElevatedButton(
+                    onPressed: controller.isListening.value
+                        ? controller.stopListening
+                        : controller.startListening,
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: controller.isListening.value
+                            ? Colors.red
+                            : Colors.green,
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 28, vertical: 16)),
+                    child: Text(
+                      controller.isListening.value ? 'Stop' : 'Start',
+                      style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                    ));
+              })
+            ],
+          ),
         ),
       ),
     );
