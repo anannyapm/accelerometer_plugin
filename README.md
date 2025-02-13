@@ -1,16 +1,17 @@
 # accelerometer_plugin
 
-A new Flutter plugin project.
+Accelerometer Flutter plugin project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/to/develop-plugins),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
 "# accelerometer_plugin" 
+
+# Flutter Accelerometer Plugin
+
+This Flutter plugin allows you to access the device's accelerometer data in your Flutter applications. It provides real-time updates of the device's motion in the x, y, and z axes. The plugin is built with Flutter. Example app is created and added in example folder. It uses GetX for state management.
+
+- Access accelerometer data (x, y, z) in real time.
+- Compatible with both Android and iOS.
+
+## Developer
+Anannya P M
